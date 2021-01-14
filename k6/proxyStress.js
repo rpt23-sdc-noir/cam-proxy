@@ -7,6 +7,7 @@ export let options = {
   ],
   startVUs: 2000
 };
+
 export default function () {
   let max = 10000000;
   let min = 9000000;
@@ -14,7 +15,7 @@ export default function () {
   let res = http.get(`http://localhost:8000/${randomId}`);
   check(res, { 'status was 200': (r) => r.status == 200 });
   sleep(1);
-}
+};
 
 /*
 -1 rps for 10 seconds
