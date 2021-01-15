@@ -1,15 +1,18 @@
 require('newrelic');
+require('dotenv').config();
 const express = require('express');
 const { truncate } = require('fs');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const path = require('path');
 const chalk = require('chalk');
+const cors = require('cors');
 const port = 8000;
 const bodyParser = require('body-parser');
 
 const app = express();
 app.use(express.static('client'))
 app.use(bodyParser.json());
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/songdata/', createProxyMiddleware({
